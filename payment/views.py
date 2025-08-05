@@ -168,11 +168,11 @@ def billing_info(request):
         paypal_dictionary = {
             'business': settings.PAYPAL_RECIEVER_EMAIL,
             'amount': totals,
-            'itam_name': 'Food Order',
+            'item_name': 'Food Order',
             'no_shipping': '2',
             'invoice': str(uuid.uuid4()),
             'currency_code': 'USD',
-            'notify_url': 'https://{}{}'.format(host, reverse("paypal_ipn")),
+            'notify_url': 'https://{}{}'.format(host, reverse("paypal-ipn")),
             'return_url': 'https://{}{}'.format(host, reverse("payment_success")),
             'cancel_return': 'https://{}{}'.format(host, reverse("payment_failed")),
         }
