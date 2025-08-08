@@ -1,12 +1,12 @@
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-import dj_database_url
+#from dotenv import load_dotenv
+#import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #load environmental variables
-load_dotenv()
+#load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -17,8 +17,8 @@ SECRET_KEY = 'django-insecure-%zgmm7$4-%qv_7o77y+ej6)v5qvs=)oy4%!jq0$s6_i)d_tuj4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['foodorderapp-production.up.railway.app', 'https://foodorderapp-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://foodorderapp-production.up.railway.app']
+ALLOWED_HOSTS = ['foodorderapp-production.up.railway.app', 'https://foodorderapp-production.up.railway.app', 'localhost', 'e4c25bdf8790.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://foodorderapp-production.up.railway.app', 'https://e4c25bdf8790.ngrok-free.app']
 
 
 # Application definition
@@ -73,7 +73,14 @@ WSGI_APPLICATION = 'Food_Order_Project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+
+
+    #'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
     #'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',

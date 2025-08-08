@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Product, Category, Profile
+from .models import Product, Category, Profile, Store
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -100,7 +100,8 @@ def category(request, foo):
     try:
         category = Category.objects.get(name=foo)
         products = Product.objects.filter(category=category)
-        return render(request, 'category.html', {'products':products, 'category':category})
+        stores = Store.objects.filter(category=category)
+        return render(request, 'category.html', {'products':products, 'category':category, 'stores':stores})
     except:    
         messages.success(request, ("That category does not exist"))
         return redirect('home')
@@ -110,10 +111,19 @@ def product(request, pk):
     return render(request,'product.html', {'product':product})
 
 
+
+def store(request, pk):
+    store = Store.objects.get(id=pk)
+    products = store.products.all()
+    return render(request, 'store.html', {'products':products, 'store':store})
+
+
 def index(request):
     products = Product.objects.all()
-    categories = Category.objects.all() 
-    return render(request,'index.html', {'products':products, 'categories':categories})
+    categories = Category.objects.all()
+    stores = Store.objects.all() 
+    return render(request,'index.html', {'products':products, 'categories':categories, 'stores':stores})
+
 
 
 def about(request):
