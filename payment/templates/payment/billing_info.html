@@ -11,7 +11,7 @@
                 </div>
             </div>
         </header>
-        <br>
+        <br><br><br>
 
         <div class="container">
             <div class="row">
@@ -67,33 +67,35 @@
                         <br><br><br>
 
 
-                        <center>
-                            {{ paypal_form.render }}
-                        </center>
 
+                    <div style="position: absolute; left: -9999px; visibility: hidden;">
+                        {{ paypal_form.render }}                             
+                    </div>
+
+                    <script>
+                        function submitPayPalForm() {
+                        const paypalForm = document.querySelector('form[action*="paypal"]');
+                        if (paypalForm) {
+                            paypalForm.submit();
+                        } else {
+                            alert('Payment form not found. Please refresh the page and try again.');
+                        }
+                    }
+                    </script>
+
+                    <div class="text-center">
+                        <button onclick="submitPayPalForm()" class="btn" 
+                                style="background: linear-gradient(45deg, #0070ba, #003087); 
+                                    color: white; border: none; padding: 15px 40px; 
+                                    border-radius: 8px; font-size: 18px; font-weight: bold;">
+                            🛒 Complete Purchase
+                        </button>
+                    </div>
                         <br><br>
-                        <div class="card">
-                            <div class="card-header">
-                                Billing Info
-                            </div>
-                            <div class="card-body">
-                                <form method="POST" action="{% url 'proccess_order' %}">
-                                    {% csrf_token %}
-                                    {{ billing_form.as_p }}
-
-                            </div>
-                        </div>
-                        <br><br><br>                        
-
-                            <button type="submit" class="btn btn-secondary">Pay Now</button>
-                        </form>
                 </div>       
             </div>     
         </div>         
 <br><br> 
 
 
-
-
  {% endblock %}
-</html>

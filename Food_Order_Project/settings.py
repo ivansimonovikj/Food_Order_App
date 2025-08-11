@@ -17,8 +17,8 @@ SECRET_KEY = 'django-insecure-%zgmm7$4-%qv_7o77y+ej6)v5qvs=)oy4%!jq0$s6_i)d_tuj4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['foodorderapp-production.up.railway.app', 'https://foodorderapp-production.up.railway.app', 'localhost', '9d03115e3013.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://foodorderapp-production.up.railway.app', 'https://9d03115e3013.ngrok-free.app']
+ALLOWED_HOSTS = ['foodorderapp-production.up.railway.app', 'https://foodorderapp-production.up.railway.app', 'localhost', 'c304bc0846f0.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://foodorderapp-production.up.railway.app', 'https://c304bc0846f0.ngrok-free.app']
 
 
 # Application definition
