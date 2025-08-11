@@ -67,10 +67,12 @@
                         <br><br><br>
 
 
+               
+                        <div style="position: absolute; left: -9999px; visibility: hidden;">
+                            {{ paypal_form.render }}                             
+                        </div>                        
+                  
 
-                    <div style="position: absolute; left: -9999px; visibility: hidden;">
-                        {{ paypal_form.render }}                             
-                    </div>
 
                     <script>
                         function submitPayPalForm() {

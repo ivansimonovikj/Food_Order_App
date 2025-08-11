@@ -6,6 +6,7 @@ from Food_Order_App.models import Profile,Product
 from django.contrib.auth.models import User
 from django.contrib import messages
 import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 from django.urls import reverse
 from paypal.standard.forms import PayPalPaymentsForm
@@ -153,6 +154,7 @@ def proccess_order(request):
         messages.success(request , ("Access Denied"))
         return redirect('home')
 
+@csrf_exempt
 def billing_info(request):
     if request.POST:
         cart = Cart(request)
